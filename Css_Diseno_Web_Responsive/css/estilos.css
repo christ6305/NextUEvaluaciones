@@ -1,0 +1,43 @@
+/*menu para nav version desktop+*/
+/*img-secundaria dos columnas flex desktop*/
+/*img-secundaria una columna  flex movil*/
+header{
+  background-color: #5b7989;
+  border-radius: 10px 10px 0px 0px;
+}
+h1{
+  color: white;
+  text-shadow: 2px  2px #02010a;
+  position: relative;
+  left: 16px;
+}
+nav{
+  position: absolute;
+  top: 4%;
+  right: 20px;
+  font-size: 18px;
+}
+nav a{
+  color: white;
+  text-decoration: none;
+}
+/*revisar*/
+#s-central{
+  background-color: #82c3a6;
+  text-align: center;
+}
+#s-central>img{
+  width: 80%
+}
+/*arreglar*/
+#s-secundaria{
+  display: flex;
+  flex-direction: row;
+  background-color: #d5c75f;
+
+}
+#s-secundaria > a {
+  width: 50%;
+  padding: 10px 20px 30px 40px;
+  border: 1px solid;
+}
