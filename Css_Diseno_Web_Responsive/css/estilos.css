@@ -1,43 +1,64 @@
-/*menu para nav version desktop+*/
 /*img-secundaria dos columnas flex desktop*/
 /*img-secundaria una columna  flex movil*/
-header{
+header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 h1{
   color: white;
   text-shadow: 2px  2px #02010a;
+  display: inline;
   position: relative;
-  left: 16px;
+  border: 1px solid black;
+  top: 5px;
+  font-size: 2.5em;
 }
 nav{
-  position: absolute;
-  top: 4%;
-  right: 20px;
-  font-size: 18px;
+  float: right;
+  padding: 1.5% 2% 0 0;
+  position: relative;
+  border: 1px solid;
+  top: 5px;
 }
-nav a{
-  color: white;
+/*menu en nav desaparece version != desktop*/
+@media (min-width:0px) {
+  nav a{
+    display: none;
+  }
+}
+/*menu en nav version = desktop*/
+@media (min-width:720px) {
+  nav a{
+    color: white;
+    display: inline;
+  }
+}
+a[href='html/inicio.html']{
   text-decoration: none;
 }
-/*revisar*/
-#s-central{
+/*#s-central{
   background-color: #82c3a6;
   text-align: center;
 }
 #s-central>img{
   width: 80%
 }
-/*arreglar*/
+
 #s-secundaria{
   display: flex;
-  flex-direction: row;
-  background-color: #d5c75f;
-
+  flex-flow: row wrap;
 }
-#s-secundaria > a {
-  width: 50%;
-  padding: 10px 20px 30px 40px;
-  border: 1px solid;
+
+#s-secundaria img{
+  width:50%;
+}*/
+
+footer{
+  position: fixed;
+  bottom: 0;
 }
