@@ -4,11 +4,33 @@ header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
   width: 100%;
-  height: 60px;
+  height: 56px;
+  top:0;
+  left: 10;
   position: fixed;
-  top: 0;
-  left: 0;
 }
+.s-central{
+  background-color: #82c3a6;
+  margin-top:48px;
+  padding:10px 10px 10px 0px;
+  width: 100%;
+}
+div[class*="img-secundaria"]>img{
+  border:1px solid;
+}
+
+#s-secundaria{
+  background-color: #d5c75f;
+  padding:10px 10px 10px 0px;
+  width: 100%;
+
+}
+#wrapper{
+  display: flex;
+  flex-direction: row;
+}
+
+
 h1{
   color: white;
   text-shadow: 2px  2px #02010a;
@@ -41,22 +63,23 @@ nav{
 a[href='html/inicio.html']{
   text-decoration: none;
 }
-/*#s-central{
-  background-color: #82c3a6;
-  text-align: center;
-}
-#s-central>img{
-  width: 80%
+
+@media screen and (max-width: 720px){
+  #s-secundaria
+  	{
+  		width: 50%;
+  		margin: 0 auto;
+  	}
+	.img-secundaria1 img
+	{
+	   width: 100%;
+	}
+	.img-secundaria2 img
+	{
+	width: 100%;
+	}
 }
 
-#s-secundaria{
-  display: flex;
-  flex-flow: row wrap;
-}
-
-#s-secundaria img{
-  width:50%;
-}*/
 
 footer{
   position: fixed;
