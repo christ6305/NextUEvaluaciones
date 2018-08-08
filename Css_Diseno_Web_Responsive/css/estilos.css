@@ -4,33 +4,8 @@ header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
   width: 100%;
-  height: 56px;
-  top:0;
-  left: 10;
-  position: fixed;
+  height: 60px;
 }
-.s-central{
-  background-color: #82c3a6;
-  margin-top:48px;
-  padding:10px 10px 10px 0px;
-  width: 100%;
-}
-div[class*="img-secundaria"]>img{
-  border:1px solid;
-}
-
-#s-secundaria{
-  background-color: #d5c75f;
-  padding:10px 10px 10px 0px;
-  width: 100%;
-
-}
-#wrapper{
-  display: flex;
-  flex-direction: row;
-}
-
-
 h1{
   color: white;
   text-shadow: 2px  2px #02010a;
@@ -47,6 +22,30 @@ nav{
   border: 1px solid;
   top: 5px;
 }
+a[href='html/inicio.html']{
+  text-decoration: none;
+}
+
+section{
+  background-color: black;
+}
+#contenido{
+  margin-top: 0px;
+  width: 100%;
+}
+#s-central{
+  background-color: #82c3a6;
+  padding:10px 0px 10px 0px;
+}
+#s-secundaria{
+  background-color: #d5c75f;
+  padding:10px 40px 10px 40px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
 /*menu en nav desaparece version != desktop*/
 @media (min-width:0px) {
   nav a{
@@ -54,32 +53,15 @@ nav{
   }
 }
 /*menu en nav version = desktop*/
-@media (min-width:720px) {
+@media  (min-width:900px) {
   nav a{
     color: white;
     display: inline;
   }
+  #img-secundaria1, #img-secundaria2 {
+    width: 50%;
+  }
 }
-a[href='html/inicio.html']{
-  text-decoration: none;
-}
-
-@media screen and (max-width: 720px){
-  #s-secundaria
-  	{
-  		width: 50%;
-  		margin: 0 auto;
-  	}
-	.img-secundaria1 img
-	{
-	   width: 100%;
-	}
-	.img-secundaria2 img
-	{
-	width: 100%;
-	}
-}
-
 
 footer{
   position: fixed;
