@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'DancingScript-Regular';
+  src: url('../fuentes/DancingScript-Regular.otf');
+}
+
 header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
@@ -12,6 +17,7 @@ h1{
   border: 1px solid black;
   top: 5px;
   font-size: 2.5em;
+  font-family: 'DancingScript-Regular';
 }
 nav{
   float: right;
@@ -19,6 +25,7 @@ nav{
   position: relative;
   border: 1px solid;
   top: 5px;
+  font-family: 'DancingScript-Regular';
 }
 a[href='html/inicio.html']{
   text-decoration: none;
@@ -29,7 +36,6 @@ section{
 }
 
 #contenido{
-  margin-top: 0px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -38,6 +44,11 @@ section{
   background-color: #82c3a6;
   padding:10px 0px 10px 0px;
 }
+#s-central figure img{
+  border: 1px solid;
+  box-shadow: 2px 2px #02010a;
+}
+
 #s-secundaria{
   background-color: #d5c75f;
   padding:10px 40px 10px 40px;
@@ -51,12 +62,70 @@ section{
   -webkit-flex-flow: row wrap;
 }
 
-.secundarias>img {
-  margin-left: 15px;
+/* .secundarias{
+  padding-left: 10px;
+} */
+.secundarias>a{
+  text-decoration: none;
+  color: black;
 }
 
+.secundarias>a>img {
+  margin-left: 15px;
+  margin: 10px;
+  border: 1px solid;
+  box-shadow: 2px 2px #02010a;
+}
+.secundarias>a>img[src='img/img-secundaria1.jpg']:hover{
+  -ms-transform: rotate(10deg);
+	-webkit-transform: rotate(10deg);
+	transform: rotate(10deg);
+  box-shadow: 2px 2px #82c3a6;
+  border: 2px solid;
+}
+
+.secundarias>a>img[src='img/img-secundaria2.jpg']:hover{
+  -ms-transform: translate(20px,-5px);
+	-webkit-transform: translate(20px,-5px);
+	transform: translate(20px,-5px);
+  box-shadow: 2px 2px #82c3a6;
+  border: 2px solid;
+}
+
+footer{
+  background-color: #c6d5c5;
+}
+
+.info-adicional{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding:10px 0px 10px 0px;
+}
+
+.contactos>h4{
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+}
+.terminos>h4{
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  -webkit-flex-flow: row wrap;
+}
+
+/* .contactos p{
+  border: 1px solid;
+} */
+
 /*menu en nav desaparece version != desktop*/
-@media (min-width:0px) {
+@media (max-width:900px) {
   nav a{
     display: none;
   }
@@ -70,13 +139,4 @@ section{
   .secundarias{
     width: 50%;
   }
-  .secundarias{
-    width: 50%;
-  }
-}
-
-
-footer{
-  position: fixed;
-  bottom: 0;
 }
