@@ -9,6 +9,12 @@ header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
   padding: 1vh 1vw;
+  animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+	-moz-animation-duration: 3s;
+	-o-animation-duration: 3s;
+  animation-name: slidein;
+  animation-name: bote;
 }
 h1{
   color: white;
@@ -27,6 +33,28 @@ nav a{
 }
 nav a[href='index.html']{
   text-decoration: none;
+}
+
+@keyframes slidein {
+  from {
+    margin-bottom: 150%;
+  }
+
+  to {
+    margin-top: -5%;
+  }
+}
+
+@keyframes bote {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  65% {
+    transform: translateY(-10px);
+  }
 }
 
 section{
