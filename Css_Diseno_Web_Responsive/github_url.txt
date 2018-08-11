@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-git merge eval/master --allow-unrelated-histories
-=======
-git merge eval/master --allow-unrelated-histories
->>>>>>> 9dc50af771fb54ec5c80480921cbaa139f2e9029
+https://github.com/christ6305/NextUEvaluaciones/tree/master/Css_Diseno_Web_Responsive
