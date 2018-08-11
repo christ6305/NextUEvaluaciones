@@ -2,81 +2,75 @@
   font-family: 'DancingScript-Regular';
   src: url('../fuentes/DancingScript-Regular.otf');
 }
-
+body{
+  margin: 0;
+}
 header {
   background-color: #5b7989;
   border-radius: 10px 10px 0px 0px;
-  width: 100%;
-  height: 60px;
+  padding: 1vh 1vw;
 }
 h1{
   color: white;
   text-shadow: 2px  2px #02010a;
   display: inline;
-  position: relative;
-  border: 1px solid black;
-  top: 5px;
   font-size: 2.5em;
   font-family: 'DancingScript-Regular';
 }
 nav{
   float: right;
-  padding: 1.5% 2% 0 0;
-  position: relative;
-  border: 1px solid;
-  top: 5px;
+  padding: 2vh 2vw;
   font-family: 'DancingScript-Regular';
 }
-a[href='html/inicio.html']{
+nav a{
+  color: white
+}
+nav a[href='index.html']{
   text-decoration: none;
 }
 
 section{
   background-color: #02010a;
 }
-
 #contenido{
-  width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
 }
 #s-central{
   background-color: #82c3a6;
-  padding:10px 0px 10px 0px;
+  padding: 2vh 2vw;
+  padding-left: 15%;
+  display: flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
 }
 #s-central figure img{
   border: 1px solid;
   box-shadow: 2px 2px #02010a;
 }
-
 #s-secundaria{
   background-color: #d5c75f;
-  padding:10px 40px 10px 40px;
-}
-#imagenes{
-  margin-left: 30px;
-  margin-right: 30px;
+  padding: 2vh 2vw;
   display: flex;
-  display: -webkit-flex;
   flex-flow: row wrap;
   -webkit-flex-flow: row wrap;
 }
-
-/* .secundarias{
-  padding-left: 10px;
-} */
-.secundarias>a{
-  text-decoration: none;
-  color: black;
+#s-secundaria figure{
+  text-align: center;
+  padding: 2vh 2vw;
+  width: 25%;
+  flex-grow: 2;
 }
-
-.secundarias>a>img {
-  margin-left: 15px;
-  margin: 10px;
-  border: 1px solid;
+#s-secundaria figure a{
+  font-family: 'DancingScript-Regular';
+  color: #02010a;
+  font-size: 2.5em;
+}
+#s-secundaria figure a img{
   box-shadow: 2px 2px #02010a;
 }
-.secundarias>a>img[src='img/img-secundaria1.jpg']:hover{
+
+#s-secundaria figure a img[src='img/img-secundaria1.jpg']:hover{
   -ms-transform: rotate(10deg);
 	-webkit-transform: rotate(10deg);
 	transform: rotate(10deg);
@@ -84,7 +78,7 @@ section{
   border: 2px solid;
 }
 
-.secundarias>a>img[src='img/img-secundaria2.jpg']:hover{
+#s-secundaria figure a img[src='img/img-secundaria2.jpg']:hover{
   -ms-transform: translate(20px,-5px);
 	-webkit-transform: translate(20px,-5px);
 	transform: translate(20px,-5px);
@@ -94,49 +88,94 @@ section{
 
 footer{
   background-color: #c6d5c5;
+  border-radius: 0px 0px 10px 10px;
+  display: flex;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+}
+.info-adicional{
+  width: 12%;
+  padding: 2vh 5vw;
+  font-family: 'DancingScript-Regular';
 }
 
-.info-adicional{
-  width: 100%;
+/**************************************/
+.galeria{
   display: flex;
   flex-direction: column;
-  padding:10px 0px 10px 0px;
+  background-color: #d5c75f;
+  padding: 2vh 2vw;
+}
+.galerias{
+  display: flex;
+	flex-direction: row;
 }
 
-.contactos>h4{
-  margin-left: 30px;
-  margin-right: 30px;
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
+.galerias>figure{
+  width: 33.3%
 }
-.terminos>h4{
-  margin-left: 30px;
-  margin-right: 30px;
-  display: flex;
-  display: -webkit-flex;
-  flex-flow: row wrap;
-  -webkit-flex-flow: row wrap;
-}
-
-/* .contactos p{
+.galerias>figure>img{
   border: 1px solid;
-} */
+  box-shadow: 2px 2px #02010a;
+}
+
+figure>img[src*='1']{
+  filter: blur(10px);
+}
+figure>img[src*='3']{
+  filter: sepia(90%);
+}
+figure>img[src*='2'],figure>img[src*='4'],figure>img[src*='6']{
+  filter: grayscale(100%);
+}
 
 /*menu en nav desaparece version != desktop*/
 @media (max-width:900px) {
-  nav a{
-    display: none;
+  header{
+    display: flex;
+    flex-direction: column;
   }
-}
-/*menu en nav version = desktop*/
-@media (min-width:900px) {
-  nav a{
-    color: white;
-    display: inline;
+  h1{
+    text-align: center;
+    display: block;
+    padding: 1vh 1vw;
+    font-size: 5vw;
+    margin: 0;
   }
-  .secundarias{
-    width: 50%;
+  nav{
+    text-align: center;
+    display: block;
+    font-size: 2vw;
+  }
+  #s-secundaria{
+    display: flex;
+    display: -webkit-flex;
+    flex: column wrap;
+    -webkit-flex: column wrap;
+    font-size: 2vw;
+    padding: 2vh 12vw;
+  }
+  #s-secundaria figure{
+    width: 70%;
+  }
+   footer{
+    display: -webkit-flex;
+  	display: flex;
+  	-webkit-flex-flow: column wrap;
+  	flex-flow: column wrap;
+  }
+  .info-adicional{
+    padding: 1vh 35vw;
+    width: 20%;
+    font-size: 2vw;
+  }
+  .galerias{
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    padding: 2vh 12vw;
+  }
+  .galerias>figure{
+    width: 50%
   }
 }
