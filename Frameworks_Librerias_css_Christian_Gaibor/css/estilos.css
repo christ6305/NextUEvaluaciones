@@ -10,16 +10,32 @@
 header{
   background: url(../img/wallpaper_blog_musica.jpg);
   background-repeat: repeat;
-  min-height: 10%;
+  min-height: 100px;
   border-radius: 0px 0px 5px 5px;
   border: 1px solid white
 }
 
 .logo-img {
   width: 100px;
+  margin: 20px;
+}
+
+.img-social {
+  width: 40px;
+  height: 40px;
 }
 
 .redes-sociales {
-  margin-top: 50px;
-  margin-left: 200px;
+  margin-top: 80px;
 }
+
+.jumbotron-blog {
+  border-radius: 0px !important;
+  margin-bottom: 0px;
+}
+
+/* @media (min-width:720px) {
+.redes-sociales{
+  float: right;
+}
+} */
