@@ -25,6 +25,10 @@ header{
   height: 35px;
 }
 
+.img-section{
+
+}
+
 .redes-sociales {
   margin-top: 80px;
 }
@@ -35,9 +39,14 @@ header{
 }
 
 nav{
+  margin-right: 50px;
+  margin-left: 50px;
+}
+section{
   margin-right: 30px;
   margin-left: 30px;
 }
+
 
 .nav-menu{
   text-align: center;
