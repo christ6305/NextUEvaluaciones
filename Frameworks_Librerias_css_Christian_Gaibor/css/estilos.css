@@ -21,8 +21,8 @@ header{
 }
 
 .img-social {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 .redes-sociales {
@@ -32,6 +32,29 @@ header{
 .jumbotron-blog {
   border-radius: 0px !important;
   margin-bottom: 0px;
+}
+
+nav{
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.nav-menu{
+  text-align: center;
+  padding: 10px;
+  border: solid 5px blue;
+  border-radius: 0px 0px 5px 5px;
+  width: 25%;
+  color: white;
+}
+
+.titulo-text {
+  font-size: 14px;
+  font-weight: bolder;
+  color: #FFFFFF;
+  padding: 10px;
+  box-shadow: 5px;
+  font-family: sans-serif;
 }
 
 /* @media (min-width:720px) {
