@@ -1,0 +1,64 @@
+
+@font-face {
+  font-family: 'Bangers-Regular';
+  src: url('../fuentes/Bangers-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Rambla-Regular';
+  src: url('../fuentes/Rambla-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'WireOne';
+  src: url('../fuentes/WireOne.ttf');
+}
+
+header{
+  background-color: rgba(255, 255, 204,0.8);
+  background-repeat: repeat;
+  min-height: 50px;
+  border-radius: 0px 0px 2px 2px;
+  border: 1px solid white
+}
+
+.nav-menu-color{
+  background-color: rgba(255, 230, 128,0.9);
+  font-family: 'Bangers-Regular';
+}
+
+.img-center {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-section-color{
+  background-color: rgba(204, 238, 255,0.8);
+}
+
+p{
+  font-family: 'Rambla-Regular';
+  font-size: 1em;
+}
+
+h1,h3,h5{
+  font-family: 'Bangers-Regular';
+}
+
+.blog-gastronomia-body {
+  background: url(../img/wallpaper_blog_gastro.jpg);
+  background-repeat: repeat;
+  background-position:center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width:639px) {
+  h5{
+    text-align: center !important;
+  }
+  p,h6  { font-size: 0.8em; }
+}
