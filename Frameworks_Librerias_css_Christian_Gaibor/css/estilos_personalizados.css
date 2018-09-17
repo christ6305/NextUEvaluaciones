@@ -1,0 +1,103 @@
+@font-face {
+  font-family: 'NotoSerif-Regular';
+  src: url('../fuentes/NotoSerif-Regular.ttf');
+}
+@font-face {
+  font-family: 'NotoSerif-italic';
+  src: url('../fuentes/NotoSerif-italic.ttf');
+}
+
+.menu{
+  height:120px;
+  background-color: rgba(31, 97, 141) !important;
+}
+
+.logo{
+  margin-left: 40px;
+  margin-top: 25px;
+  width: 120px;
+}
+
+.borde-menu{
+  margin-bottom:10%;
+}
+
+body{
+  background: url(../img/wallpaper_blog_turismo.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position:center;
+  width: 100%;
+  height: 100%;
+}
+
+.columna-grupos{
+  width: 75px !important;
+}
+
+.brand-logo-posicion{
+  display: flex;
+}
+
+.brand-logo-posicion>h6{
+  margin-top: 45px;
+  font-size: 1.5em;
+}
+
+.color-primario{
+  background-color: rgba(31, 97, 141,0.8) !important;
+}
+
+.color-secundario{
+  background-color: rgba(93, 173, 226,0.9) !important;
+}
+
+.margen-imagenes{
+  margin-top: 20px;
+}
+
+.info-comentarios{
+  display: flex;
+  color:white;
+}
+
+h1{
+  font-family: "NotoSerif-Regular";
+}
+
+h6{
+  padding: 10px;
+  font-family: "NotoSerif-italic";
+}
+
+.imagen-perfil{
+  -moz-transform: translate(50%);
+  -webkit-transform: translate(50%);
+  -ms-transform: translate(50%);
+  -o-transform: translate(50%);
+  transform: translate(50%);
+}
+
+@media (max-width:993px) {
+  .brand-logo-posicion{
+    margin-top: 0px;
+    left: 11% !important;
+    width: 50%;
+  }
+
+}
+
+@media (max-width:626px) {
+  .menu{
+    height:100px;
+  }
+  .logo{
+    width: 50%;
+    margin-left: 0px;
+    margin-top: 20px;
+  }
+  .brand-logo-posicion>h6{
+    margin-top: 20px;
+    font-size: 1em;
+  }
+}
