@@ -1,5 +1,4 @@
 
-
 function cambioColor() {
   $('.main-titulo').animate({ color: "white"}, 500, function(){
     $('.main-titulo').animate({ color: "#DCFF0E"}, 500, function(){
@@ -11,27 +10,64 @@ function cambioColor() {
 cambioColor()
 
   $(".btn-reinicio").click(function(){
-    i=0;
-    score=0;
-    mov=0;
-    $("#score-text").html("0");
-    $("#movimientos-text").html("0");
-    $(this).html("REINICIAR");
-    $('#timer').timer({
-		countdown: true,
-		duration: '2m',
-		format: '%M:%S'
-	});
+		if($(this).html()=='Iniciar')
+		{
+			i=0;
+	    score=0;
+	    mov=0;
+	    $("#score-text").html("0");
+	    $("#movimientos-text").html("0");
+			$(this).html("Reiniciar");
+	    $('#timer').timer({
+			countdown: true,
+			duration: '2m',
+			format: '%M:%S',
+			callback: function() {
+					$(".panel-tablero").hide();
+					$(".time").hide();
+          $(".panel-score").width("100%");
+					$('#timer').timer('stop');
+				}
+			});
+		}else
+		{
+			$(".panel-tablero").show();
+      $(".panel-score").css({"width": "25%","height": "700px","display": "flex","flex-flow": "column nowrap","justify-content": "space-between"})
+			$(".time").show();
+			i=0;
+	    score=0;
+	    mov=0;
+	    $("#score-text").html("0");
+	    $("#movimientos-text").html("0");
+			$("#timer").html("02:00");
+			$('#timer').timer('reset');
+	    $('#timer').timer({
+			countdown: true,
+			duration: '2m',
+			format: '%M:%S',
+			callback: function() {
+					$(".panel-tablero").hide();
+					$(".time").hide();
+					$('#timer').timer('stop');
+				}
+			});
+		}
 });
 
-  var fila=7;
-  var columna = 7;
-  var tabla = [];
-  var validFigures=0;
-  var score = 0;
-  var movi = 0;
+//empieza();
 
-  function caramelo(f,c,img,src) {
+
+// function empieza()
+// {
+	var fila=7;
+	var columna = 7;
+	var tabla = [];
+	var validFigures=0;
+	var score = 0;
+	var movi = 0;
+
+
+	function caramelo(f,c,img,src) {
     return {
     r: f,
     c: c,
@@ -40,24 +76,24 @@ cambioColor()
     }
   }
 
-  var caramelos=[];
+	var caramelos=[];
   caramelos[0]="image/1.png";
   caramelos[1]="image/2.png";
   caramelos[2]="image/3.png";
   caramelos[3]="image/4.png";
 
-  for (var i = 0; i < fila; i++) {
-   tabla[i]=[];
-   for (var j =0; j< columna; j++) {
-		 	var aleatorio = Math.floor((Math.random()*4));
-      tabla[i][j]= new caramelo(i,j,null,caramelos[aleatorio]);
-   }
-  }
+	for (var i = 0; i < fila; i++) {
+	   tabla[i]=[];
+	   for (var j =0; j< columna; j++) {
+			 	var aleatorio = Math.floor((Math.random()*4));
+	      tabla[i][j]= new caramelo(i,j,null,caramelos[aleatorio]);
+	   }
+	}
 
-  var ancho1 = $('.panel-tablero').width() / 7;
+	var ancho1 = $('.panel-tablero').width() / 7;
   var largo1 = $('.panel-tablero').height() / 7;
 
-  for (var r = 0; r < fila; r++) {
+	for (var r = 0; r < fila; r++) {
     for (var c =0; c< columna; c++) {
       var cuadro = $("<img id='candy_"+r+"_"+c+"' ondrop='_onDrop(event)' ondragstart='_ondragstart(event)' ondragover='_onDragOverEnabled(event)'src='"+
         tabla[r][c].src+"' style='height:"+largo1+"px'/>");
@@ -68,17 +104,23 @@ cambioColor()
 
 	construye();
 
-  function _ondragstart(a)
+	score= 0 ;
+	moves= 0 ;
+ 	$("#score-text").html("0");
+  $("#movimientos-text").html("0");
+
+
+	function _ondragstart(a)
   {
     a.dataTransfer.setData("text/plain", a.target.id);
   }
 
-  function _onDragOverEnabled(e)
-  {
-		e.preventDefault();
-  }
+	function _onDragOverEnabled(e)
+ 	{
+	 	e.preventDefault();
+ 	}
 
-  function _onDrop(e)
+	function _onDrop(e)
   {
   	var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
     if (isFirefox) {
@@ -115,7 +157,7 @@ cambioColor()
     }
 	}
 
-  function combinar()
+	function combinar()
   {
   	for (var r = 0; r < fila; r++)
     {
@@ -225,45 +267,46 @@ cambioColor()
     }
   }
 
-  function construye()
-	{
-  	for (var r=0;r<fila;r++)
-    {
-    	for (var c=0;c<columna;c++)
-      {
-        if (tabla[r][c].isInCombo)
-        {
-          tabla[r][c].o.attr("src","");
-          tabla[r][c].isInCombo=false;
-        }
-      }
-    }
+	function construye()
+		{
+	  	for (var r=0;r<fila;r++)
+	    {
+	    	for (var c=0;c<columna;c++)
+	      {
+	        if (tabla[r][c].isInCombo)
+	        {
+	          tabla[r][c].o.attr("src","");
+	          tabla[r][c].isInCombo=false;
+	        }
+	      }
+	    }
 
-		for (var r=0;r<fila;r++)
-    {
-			for (var c = 0;c<columna;c++)
-      {
-      	tabla[r][c].o.attr("src",tabla[r][c].src);
-        tabla[r][c].isInCombo=false;
+			for (var r=0;r<fila;r++)
+	    {
+				for (var c = 0;c<columna;c++)
+	      {
+	      	tabla[r][c].o.attr("src",tabla[r][c].src);
+	        tabla[r][c].isInCombo=false;
 
-				if (tabla[r][c].src==null)
-          	tabla[r][c].respawn=true;
-        if (tabla[r][c].respawn==true)
-        {
-					var aleatorio = Math.floor((Math.random()*4));
-          tabla[r][c].o.off("ondragover");
-          tabla[r][c].o.off("ondrop");
-          tabla[r][c].o.off("ondragstart");
-          tabla[r][c].respawn=false;
-          tabla[r][c].src=caramelos[aleatorio];
-          tabla[r][c].locked=false;
-          tabla[r][c].o.attr("src",tabla[r][c].src);
-          tabla[r][c].o.attr("ondragstart","_ondragstart(event)");
-          tabla[r][c].o.attr("ondrop","_onDrop(event)");
-          tabla[r][c].o.attr("ondragover","_onDragOverEnabled(event)");
-        }
-      }
-    }
+					if (tabla[r][c].src==null)
+	          	tabla[r][c].respawn=true;
+	        if (tabla[r][c].respawn==true)
+	        {
+						var aleatorio = Math.floor((Math.random()*4));
+	          tabla[r][c].o.off("ondragover");
+	          tabla[r][c].o.off("ondrop");
+	          tabla[r][c].o.off("ondragstart");
+	          tabla[r][c].respawn=false;
+	          tabla[r][c].src=caramelos[aleatorio];
+	          tabla[r][c].locked=false;
+	          tabla[r][c].o.attr("src",tabla[r][c].src);
+	          tabla[r][c].o.attr("ondragstart","_ondragstart(event)");
+	          tabla[r][c].o.attr("ondrop","_onDrop(event)");
+	          tabla[r][c].o.attr("ondragover","_onDragOverEnabled(event)");
+	        }
+	      }
+	    }
 
-    combinar();
-  }
+	    combinar();
+	  }
+//}
