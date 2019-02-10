@@ -10,24 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit {
-	articulos : any[] = [];
-	articuloFilter: any = {nombre: ''};
-	cantidadAdd;
+	productos : any[] = [];
+  producto : any;
+	productoFilter: any = {nombre: ''};
 
-  constructor(private carShopingService : CarShopingService, private router: Router, private httpService : HttpService) {}
+  constructor(private carShopingService : CarShopingService,private router: Router){}
+
+  public cantidadAdd;
 
   ngOnInit() {
-    this.articulos = this.carShopingService.getArticulos();
-    if(this.articulos.length == 0) {
-      this.httpService.allArticulos().subscribe(
-        data => {
-          this.articulos = data;
-          this.carShopingService.setArticulos(this.articulos);
-        }, error => {
-          console.log(error);
-        }
-      );
-    }
+    this.carShopingService.getAllProducts().subscribe(productos=>{
+      this.productos=productos;
+    })
   }
 
   verMas(articuloSel) {
@@ -36,9 +30,11 @@ export class CatalogoComponent implements OnInit {
   }
 
   addCanasta(articuloSel) {
-    if(!isNaN(this.cantidadAdd)) {
-      this.carShopingService.setItem(articuloSel);
-      this.carShopingService.agregarItemShoping(this.cantidadAdd);
-    }
+    this.carShopingService.getOneProduct(articuloSel.id).subscribe(producto => {
+      this.producto = producto;
+      producto.carrito=this.cantidadAdd;
+      this.carShopingService.updateProduct(this.producto);
+      this.carShopingService.agregarItemShoping(this.producto);
+    });
   }
 }

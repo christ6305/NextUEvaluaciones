@@ -1,0 +1,4 @@
+export const AGREGA_LOGIN = 'AGREGA_LOGIN';
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const SET_PRODUCTOS = 'SET_PRODUCTOS';
+export const AGREGA_PRODUCTO = 'AGREGA_PRODUCTO';

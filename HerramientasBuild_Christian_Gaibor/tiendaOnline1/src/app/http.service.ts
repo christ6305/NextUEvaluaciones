@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import 'rxjs/Rx'
+import {AngularFireAuth} from '@angular/fire/auth';
+import {map} from 'rxjs/operators';
+import {auth} from 'firebase/app';
+
 
 @Injectable()
 export class HttpService {
+  
+  constructor(private afsAuth:AngularFireAuth) { }
 
-  constructor(private http : Http) { }
+  registerUser(){}
 
-  validarUsuario(user, pass){
-  	let datos = JSON.stringify({email: user, password: pass});
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-  	return this.http.post('./login', datos, {headers: headers}).map((response: Response) => response.json());
+  loginEmailUser(email:string, pass:string){
+    return new Promise((resolve,reject)=>{
+      this.afsAuth.auth.signInWithEmailAndPassword(email,pass)
+      .then(userData=>resolve(userData),
+      err=>reject(err));
+    })
   }
 
-  allArticulos(){
-  	return this.http.get('./articulos/all').map((response: Response) => response.json())
+  loginFacebookUser(){}
+
+  loginGoogleUser(){
+    return this.afsAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-  postDatos(data){
-  	let datos = JSON.stringify(data);
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-  	return this.http.post('./articulos/update', datos, {headers: headers}).map((response: Response) => response.json())
+  logOutUser(){
+    return this.afsAuth.auth.signOut();
+  }
+
+  isAuth(){
+    return this.afsAuth.authState.pipe(map(auth=>auth));
   }
 
 }

@@ -1,57 +1,97 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { ProductoInterface } from '../models/producto';
+import { Observable } from 'rxjs/internal/Observable';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class CarShopingService {
   private item : any = {};
   private carShoping : any[] = [];
-  private articulos : any[] = [];
 
-  constructor() {}
+  constructor(private afs: AngularFirestore) { }
 
-  setArticulos(articulos){
-    this.articulos = articulos;
-  }
-
-  getArticulos(){
-    return this.articulos;
-  }
-
-  setItem(item){
-  	this.item = item;
-  }
-
-  getItem() {
-  	return this.item;
-  }
+  private productosCollection: AngularFirestoreCollection<ProductoInterface>;
+  private productos: Observable<ProductoInterface[]>;
+  private productoDoc: AngularFirestoreDocument<ProductoInterface>;
+  private producto: Observable<ProductoInterface>;
 
   setCarShoping(){
     do {
       this.carShoping.pop();
     } while (this.carShoping.length > 0);
   }
-  
+
+  getAllProducts() {
+    this.productosCollection = this.afs.collection<ProductoInterface>('producto');
+    return this.productos = this.productosCollection.snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as ProductoInterface;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+    }));
+  }
+
+  getAllProductsCarrito() {
+    this.productosCollection = this.afs.collection('producto', ref => ref.where('carrito', '>', 0));
+    return this.productos = this.productosCollection.snapshotChanges()
+      .pipe(map(changes => {
+        return changes.map(action => {
+          const data = action.payload.doc.data() as ProductoInterface;
+          data.id = action.payload.doc.id;
+          return data;
+        });
+    }));
+  }
+
+  setItem(producto){
+    this.producto = producto;
+  }
+
+  getItem() {
+    return this.producto;
+  }
+
   agregarItemShoping(cant){
-    for (var i = 0; i < this.articulos.length; i++) {
-      if(this.articulos[i]._id == this.item._id){
-        this.articulos[i].stock = this.articulos[i].stock - cant;
-      }
-    }
+      this.carShoping.push({producto: this.producto, cantidad: cant})
+  }
 
-    let encontrado = -1;
-    for (var j = 0; j < this.carShoping.length; j++) {
-      if(this.carShoping[j].item._id == this.item._id){
-        encontrado = j;
-      }
-    }
+  getCarShopping(){
+  	return this.carShoping;
+  }
 
-    if(encontrado != -1){
-      this.carShoping[encontrado].cantidad = this.carShoping[encontrado].cantidad + cant;
-    } else {
-      this.carShoping.push({item: this.item, cantidad: cant})
+  getOneProduct(id: string) {
+    this.productoDoc = this.afs.doc<ProductoInterface>(`producto/${id}`);
+    return this.producto = this.productoDoc.snapshotChanges().pipe(map(action => {
+      if (action.payload.exists === false) {
+        return null;
+      } else {
+        const data = action.payload.data() as ProductoInterface;
+        data.id = action.payload.id;
+        return data;
+      }
+    }));
+  }
+
+  updateProduct(producto: ProductoInterface): void {
+    let id = producto.id;
+    this.productoDoc = this.afs.doc<ProductoInterface>(`producto/${id}`);
+    this.productoDoc.update(producto);
+  }
+
+  updateProductPagar(producto:any[] =[]):void{
+    for(let e  of producto){
+      let id=e.id;
+      this.productoDoc = this.afs.doc<ProductoInterface>(`producto/${id}`);
+      e.carrito=0;
+      this.productoDoc.update(e);
     }
   }
 
   getCarShoping(){
   	return this.carShoping;
   }
+
 }

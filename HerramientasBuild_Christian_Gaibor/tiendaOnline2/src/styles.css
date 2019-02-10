@@ -1,0 +1,92 @@
+.estiloLogin{
+  background: url("./images/login-fondo.jpg")  no-repeat center center fixed rgba(0, 0, 0, 0.5) ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.estiloAplicacion{
+  background: url("./images/main-fondo.jpg")  no-repeat center center fixed rgba(0, 0, 0, 0.5) ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+}
+
+.colorIcono{
+  background:   '#DBDBDB' !important;
+}
+
+
+
+
+.contenedor {
+    height: 80vh;
+}
+
+.colorBlanco{
+  color:white;
+}
+
+.cantidad{
+  width:  60px !important;
+}
+
+.margenIzquierda10{
+  margin-left: 10px;
+}
+
+.margenArriba25{
+  margin-top:25px;
+}
+
+
+
+.itemCarrito{
+  font-size: 3pt;
+}
+
+
+  @media (max-width:400px) {
+    .imagenCatalogo{
+      height: 20rem;
+      width: 100%;
+    }
+    .imagenDetalle{
+      height: 15rem;
+width: 100%;
+
+    }
+  }
+
+  @media (min-width:401px) and (max-width:800px) {
+    .imagenCatalogo{
+      height: 25rem;
+      padding:10px
+    }
+    .imagenDetalle{
+      height: 15rem;
+      padding:10px
+    }
+  }
+
+  @media (min-width:800px) {
+    .imagenCatalogo{
+      height: 10rem;
+      padding:10px
+    }
+    .imagenDetalle{
+      height: 25rem;
+      padding:10px
+    }
+  }
+
+  .marco{
+    border: solid 1px rgba(211, 211,211, 0.5);
+    padding: 10px;
+    margin: 10px;
+
+  }

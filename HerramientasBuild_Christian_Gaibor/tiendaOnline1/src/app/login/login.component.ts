@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpService } from '../http.service';
 import { Response } from '@angular/http';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {auth} from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -14,28 +16,33 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   error:string;
 
-  constructor(private httpService : HttpService, private router: Router, private route: ActivatedRoute) { }
+  constructor(public afAuth:AngularFireAuth,private router: Router,private authService: HttpService) { }
+  public email:string='';
+  public password:string='';
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  login(){
-  	this.loading = true;
-
-  	this.httpService.validarUsuario(this.model.email,this.model.password).subscribe(
-  		data => {
-        if(data.loginMsg == "Ok") {
-          this.router.navigate(['/dash']);
-        } else {
-            this.error = data.loginMsg;
-        }
-        this.loading = false;
-      }, error => {
-        console.log(error);
-        this.loading = false;
-      }
-  	);
+  onLogin():void{
+    this.authService.loginEmailUser(this.email,this.password)
+    .then((res)=>{
+      this.onLoginRedirect();
+    }).catch(err=>console.log('err',err.message));
   }
 
+  onLogingGoogle():void{
+    this.authService.loginGoogleUser()
+    .then((res)=>{
+      console.log('resUser',res);
+      this.onLoginRedirect();
+    }).catch(err=>console.log('err',err.message));
+  }
+
+  onLogout(){
+    this.authService.logOutUser();
+  }
+
+  onLoginRedirect():void{
+    this.router.navigate(['dash']);
+  }
 }

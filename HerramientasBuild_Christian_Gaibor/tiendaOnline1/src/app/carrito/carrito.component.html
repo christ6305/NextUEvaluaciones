@@ -5,18 +5,18 @@
 	<div class="detallecarrito">
 		<div class="lista">
 			<ul>
-				<li *ngFor="let caritem of carItems">
+				<li *ngFor="let caritem of productos">
 					<div class="itemdata">
 						<div class="isq">
-							<img src="/assets/{{caritem.item.img}}">
+							<img src="/assets/{{caritem.imagen}}">
 						</div>
 						<div class="der">
-							<p>{{caritem.item.nombre}}</p>
-							<p>Unidades: {{caritem.cantidad}}</p>
+							<p>{{caritem.nombre}}</p>
+							<p>Unidades: {{caritem.carrito}}</p>
 						</div>
 					</div>
 					<div class="subtotal">
-						<p>Subtotal: ${{caritem.item.precio*caritem.cantidad}}</p>
+						<p>Subtotal: ${{caritem.precio*caritem.carrito}}</p>
 					</div>
 				</li>
 			</ul>
@@ -29,10 +29,5 @@
 				<a class="boton" [routerLink]="['../catalogo']">Cancelar</a>
 				<a class="boton" (click)="pagar();">Pagar</a>
 			</div>
-			<div class="progressBar">
-        		<img *ngIf="loading" src="/assets/progress_bar.gif" />
-    		</div>
-    		<div *ngIf="error" class="alertaUp">{{error}}</div>
-		</div>
 	</div>
 </div>
